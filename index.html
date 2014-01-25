@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Webgnome &middot; Home</title>
+    <title>Avocado &middot; Home</title>
     
     <!-- Master style sheet -->
     <link href="css/avocado.css" rel="stylesheet">
@@ -11,28 +11,44 @@
     
 </head>
     
-<body>
+<body ng-app="avocado">
     <header>
         <nav>
-            div.
+            <div class="navbar-container container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">Avocado <small>A hackTech Project</small></a>
+                </div>
+                <a href="#" class="btn btn-info btn-inverted navbar-btn pull-right">Install</a>
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
+    <section class="search-overlay">
+        <div class="search-container container">
+            <input class="search-box" type="text" placeholder="start typing to search" typeahead="keyword for keyword in keywords">
+        </div>
+    </section>
     <section class="graph">
         
     </section>
-    <footer>
+    <section class="selected-tags">
         
-    </footer>
+    </section>
 
     <!-- Firebase -->
     <script src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
     
     <!-- Angular -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.9/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angularFire/0.5.0/angularfire.min.js"></script>
 
     <!-- jQuery -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </body>
     
 </html>
