@@ -1,0 +1,6 @@
+// Avocado Version 0.1
+Stack
+	HTML5
+	LESS/CSS3
+	Angular.js
+	Firebase
