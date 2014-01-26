@@ -28,7 +28,7 @@
     <section class="search-overlay" ng-controller="SearchCtrl">
         <div class="search-container container">
 
-            <tags-input ng-model="search" placeholder="start typing to search" enable-editing-last-tag="true" on-tag-added="updateTags()" on-tag-removed="updateTags()">
+            <tags-input ng-model="search" placeholder="start typing to search" enable-editing-last-tag="true" on-tag-added="updateTags()" on-tag-removed="updateTags()" autofocus>
 
                 <auto-complete source="loadKeywords($query)" min-length="1"></auto-complete>
             </tags-input>
