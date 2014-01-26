@@ -14,12 +14,13 @@
         <nav>
             <div class="navbar-container container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand"><img src="img/avocado.svg" height="30" alt="">Avocado <small>a hackTech Project</small></a>
+                    <a href="#" class="navbar-brand"><img src="img/avocado.svg" height="30" alt="">Avocado <small>the Web Genome Project</small></a>
                 </div>
                 <a href="#" class="btn btn-info btn-inverted navbar-btn pull-right">Install</a>
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li id="hacktech"><a href="https://twitter.com/thehackTECH"><small>#HackTech</small></a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,7 +28,7 @@
     <section class="search-overlay" ng-controller="SearchCtrl">
         <div class="search-container container">
             <!-- <input class="search-box" type="text" ng-model="selected" placeholder="start typing to search" typeahead="state for state in states | filter:$viewValue | limitTo:8"> -->
-            <tags-input ng-model="search" placeholder="start typing to search" enable-editing-last-tag="true" on-tag-added="hideIntroduction()">
+            <tags-input ng-model="search" placeholder="start typing to search" enable-editing-last-tag="true" on-tag-added="hideIntroduction()" autofocus>
                 <auto-complete source="loadKeywords($query)" min-length="1"></auto-complete>
             </tags-input>
         </div>
@@ -38,7 +39,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="jumbotron">
                         <h2>Avocado is a new way to explore the Web.</h2>
-                        <button class="btn btn-huge btn-inverted btn-info">Install</button>
+                        <!-- <button class="btn btn-huge btn-inverted btn-info">Install</button> -->
                     </div>
                 </div>
             </div>
