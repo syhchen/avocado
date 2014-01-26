@@ -5917,6 +5917,7 @@ header nav .btn {
   top: 70%;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 tags-input {
   margin-left: -15px;
@@ -6148,4 +6149,7 @@ fieldset[disabled] .tag-item button {
 .suggestion-list em {
   font-weight: bold;
   font-style: normal;
+}
+svg circle {
+  cursor: pointer;
 }

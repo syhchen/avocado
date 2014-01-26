@@ -71,6 +71,10 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
 
     sites = _.flatten(sites);
 
+    if (sites.length == 0) {
+      updateD3(sites);
+    }
+
     async.map(sites, getSiteFromFirebase, function(err, results) {
       updateD3(results);
       console.log(results)
@@ -92,31 +96,51 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
         .attr("height", diameter)
         .attr("class", "bubble");
 
+      var width = $('body').width(),
+          height = $('body').height();
+
       var diameter = 960,
         color = d3.scale.category20c();
 
       var force = d3.layout.force()
-        .size([1200,500])
+        .size([width,height + 200])
         .nodes(result)
-        .charge(-600)
+        .charge(-2000)
+        .gravity(0.2)
         .on("tick", tick)
         .start();
 
       var node = svg.selectAll(".node")
-        .data(force.nodes())
-      .enter().append("g")
+        .data(force.nodes());
+
+
+      node.enter().append("g")
         .attr("class", "node")
         .call(force.drag);
+
+      node.exit()
+        .transition()
+        .duration(500)
+        .selectAll('circle')
+        .attr('r', 0)
+        .each('end', function () {
+          d3.select(this.parentNode)
+          .transition()
+          .style('opacity', 0)
+          .remove(); // remove parent here...
+        })
         
-      node.append('circle')
+      var circle = node.append('circle')
         .attr('r', '60px')
         .attr('fill', function(d,i) { return color(i); })
+        .on("dblclick", function(d) { window.open(d.url,'_blank'); });
 
       node.append("text")
         .attr("y", 70)
-        .attr("dy", ".35em")
+        .attr("dy", ".50em")
         .attr('text-anchor', 'middle')
-        .text(function(d) { return d.title; });
+        .attr('fill', '#fff')
+        .text(function(d) { return d.title.substring(0,30); });
 
 
       function tick() {
@@ -124,7 +148,6 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
           .attr("transform", function(d) { 
             return "translate(" + d.x + "," + d.y + ")"; });
           }
-
-    }
+      }
   }
 });
