@@ -95,16 +95,35 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
       var diameter = 960,
         color = d3.scale.category20c();
 
-      var bubble = d3.layout.pack()
-        .sort(null)
-        .size([diameter, diameter])
-        .padding(1.5);
+      var force = d3.layout.force()
+        .size([1200,500])
+        .nodes(result)
+        .charge(-600)
+        .on("tick", tick)
+        .start();
 
-      var node = svg.selectAll('.node')
-        .data(bubble.nodes(result))
-      .enter().append('g')
+      var node = svg.selectAll(".node")
+        .data(force.nodes())
+      .enter().append("g")
         .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.value + ")"; })
+        .call(force.drag);
+        
+      node.append('circle')
+        .attr('r', '60px')
+        .attr('fill', function(d,i) { return color(i); })
+
+      node.append("text")
+        .attr("y", 70)
+        .attr("dy", ".35em")
+        .attr('text-anchor', 'middle')
+        .text(function(d) { return d.title; });
+
+
+      function tick() {
+        node
+          .attr("transform", function(d) { 
+            return "translate(" + d.x + "," + d.y + ")"; });
+          }
 
     }
   }
