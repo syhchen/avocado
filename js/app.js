@@ -5,6 +5,10 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
   $scope.keywords = $firebase(new Firebase('https://guac.firebaseio.com/keywords'));
 
   $scope.selected = undefined;
+  $scope.search = undefined;
+  $scope.selected_sites = [];
+
+
 
   $scope.loadSuperheroes = function($query) {
     var deferred = $q.defer();
@@ -25,14 +29,83 @@ angular.module('avocado', ['firebase', 'ngTagsInput',])
 
     items = _.chain($scope.keywords.$getIndex())
           .filter(function(x) { return x.toLowerCase().indexOf($query.toLowerCase()) > -1; })
-          .take(10)
+          .take(3)
           .value();
 
     deferred.resolve(items);
     return deferred.promise;
   }
 
-  $scope.hideIntroduction = function() {
+  $scope.updateTags = function() {
     $('.introduction').fadeOut()
+
+    var tags = $scope.search;
+
+    var search_tags = _.intersection(tags, $scope.keywords.$getIndex()),
+        sites = [];
+
+    search_tags.forEach(function(tag) {
+      sites = sites.concat(_.keys($scope.keywords[tag].sites))
+    })
+
+    sites = _.countBy(sites)
+    sites = _.pairs(sites).map(function(d) {
+      return {
+        url: d[0],
+        weight: d[1]/tags.length
+      }
+    })
+
+    var fb = new Firebase('https://guac.firebaseio.com')
+
+    $scope.selected_sites = [];
+
+    // _.flatten(sites).forEach(function(site) {
+    //   fb.child('pages/' + site.url).once('value', function(snapshot) {
+    //     var page_info = snapshot.val();
+
+    //     $scope.selected_sites.push(page_info);
+    //     $scope.$apply();
+    //   })
+    // })
+
+    sites = _.flatten(sites);
+
+    async.map(sites, getSiteFromFirebase, function(err, results) {
+      updateD3(results);
+      console.log(results)
+    })
+
+    function getSiteFromFirebase(site, callback) {
+      fb.child('pages/' + site.url).once('value', function(snapshot) {
+        var page_info = snapshot.val();
+
+        page_info.weight = site.weight;
+
+        callback(null, page_info);
+      })
+    }
+
+    function updateD3(result) {
+      var svg = d3.select('#graph')
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
+
+      var diameter = 960,
+        color = d3.scale.category20c();
+
+      var bubble = d3.layout.pack()
+        .sort(null)
+        .size([diameter, diameter])
+        .padding(1.5);
+
+      var node = svg.selectAll('.node')
+        .data(bubble.nodes(result))
+      .enter().append('g')
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.value + ")"; })
+
+    }
   }
 });
