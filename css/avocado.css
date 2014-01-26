@@ -258,8 +258,8 @@ body {
   font-family: Proxima Nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #428bca;
 }
 input,
 button,
@@ -297,7 +297,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: #428bca;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1415,7 +1415,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #ffffff;
+  background-color: #428bca;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -1907,7 +1907,7 @@ textarea.input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373;
+  color: #ffffff;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -3495,7 +3495,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #ffffff;
+  background-color: #428bca;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -3541,7 +3541,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #428bca;
   }
 }
 .nav-pills > li {
@@ -3609,7 +3609,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #428bca;
   }
 }
 .tab-content > .tab-pane {
@@ -4385,7 +4385,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: #428bca;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4406,7 +4406,7 @@ a.thumbnail.active {
 }
 .thumbnail .caption {
   padding: 9px;
-  color: #333333;
+  color: #ffffff;
 }
 .alert {
   padding: 15px;
@@ -5563,7 +5563,11 @@ button.close {
 .modal-footer:before,
 .modal-footer:after,
 header nav:before,
-header nav:after {
+header nav:after,
+tags-input:before,
+tags-input:after,
+.tag-list:before,
+.tag-list:after {
   content: " ";
   display: table;
 }
@@ -5581,7 +5585,9 @@ header nav:after {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
-header nav:after {
+header nav:after,
+tags-input:after,
+.tag-list:after {
   clear: both;
 }
 .center-block {
@@ -5769,8 +5775,8 @@ td.visible-print {
 .btn-inverted {
   background: none;
 }
-body {
-  background: #428bca;
+.btn-huge {
+  padding: 20px 32px;
 }
 header nav {
   position: relative;
@@ -5879,25 +5885,256 @@ header nav .navbar-brand small {
   font-weight: 100;
   margin-left: 10px;
 }
+header nav .navbar-brand img {
+  margin-right: 10px;
+  position: relative;
+  top: -4px;
+}
 header nav ul,
 header nav .btn {
   text-transform: lowercase;
 }
+.introduction .jumbotron {
+  background: none;
+}
+.introduction .jumbotron h2 {
+  font-weight: 700;
+  text-align: center;
+}
 .search-overlay {
   position: absolute;
-  bottom: 120px;
+  top: 70%;
   left: 0;
   right: 0;
 }
-.search-box {
+tags-input {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.tag-input-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .tag-input-container {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+.tag-input {
   background: none;
   color: #fff;
   display: block;
   width: 100%;
   border: 0px solid white;
   outline: 0;
+  margin-top: -8px;
+  margin-bottom: 20px;
   font-size: 36px;
 }
-.search-box::-webkit-input-placeholder {
+.tag-input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+.tag-list-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .tag-list-container {
+    left: 16.666666666666664%;
+  }
+}
+@media (min-width: 992px) {
+  .tag-list-container {
+    float: left;
+    width: 50%;
+  }
+}
+.tag-list-container h6 {
+  color: rgba(255, 255, 255, 0.5);
+}
+.tag-list {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.tag-list > li {
+  position: relative;
+  display: block;
+}
+.tag-list > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.tag-list > li > a:hover,
+.tag-list > li > a:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+.tag-list > li.disabled > a {
+  color: #999999;
+}
+.tag-list > li.disabled > a:hover,
+.tag-list > li.disabled > a:focus {
+  color: #999999;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.tag-list .open > a,
+.tag-list .open > a:hover,
+.tag-list .open > a:focus {
+  background-color: #eeeeee;
+  border-color: #428bca;
+}
+.tag-list .nav-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.tag-list > li > a > img {
+  max-width: none;
+}
+.tag-list > li {
+  float: left;
+}
+.tag-list > li > a {
+  border-radius: 4px;
+}
+.tag-list > li + li {
+  margin-left: 2px;
+}
+.tag-list > li.active > a,
+.tag-list > li.active > a:hover,
+.tag-list > li.active > a:focus {
+  color: #ffffff;
+  background-color: #428bca;
+}
+.tag-list li + li {
+  margin-left: 0;
+}
+.tag-list li {
+  margin-right: 5px;
+}
+.tag-item {
+  border: 1px solid #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.tag-item button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  font-size: 24px;
+  padding: 0 0 0 5px;
+  line-height: 20px;
+  background: none;
+  color: #fff;
+}
+.tag-item button:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.tag-item button:hover,
+.tag-item button:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.tag-item button:active,
+.tag-item button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.tag-item button.disabled,
+.tag-item button[disabled],
+fieldset[disabled] .tag-item button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.autocomplete {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  .autocomplete {
+    right: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .autocomplete {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+.autocomplete h6 {
+  color: rgba(255, 255, 255, 0.5);
+}
+.suggestion-list {
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+.suggestion-list .suggestion-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  background: none;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.suggestion-list .suggestion-item:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.suggestion-list .suggestion-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.suggestion-list .suggestion-item > .badge {
+  float: right;
+}
+.suggestion-list .suggestion-item > .badge + .badge {
+  margin-right: 5px;
+}
+.suggestion-list li.selected {
+  color: #428bca;
+  background-color: #fff;
+}
+.suggestion-list em {
+  font-weight: bold;
+  font-style: normal;
 }
