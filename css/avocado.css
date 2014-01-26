@@ -6153,3 +6153,22 @@ fieldset[disabled] .tag-item button {
 svg circle {
   cursor: pointer;
 }
+#about-quote {
+  margin-top: 160px;
+  font-weight: 200;
+  font-size: 30px;
+}
+.center-container {
+  position: relative;
+}
+#contact-email {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+  font-weight: 200;
+  font-size: 36px;
+}
+#contact-email a {
+  color: #fff;
+}

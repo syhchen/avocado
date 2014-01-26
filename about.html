@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="avocado">
 <head>
     <title>Avocado &middot; About</title>
     
     <!-- Master style sheet -->
     <link href="css/avocado.css" rel="stylesheet">
     
-    <!-- favicons -->
-    <!--TODO-->
-    
 </head>
     
 <body>
+    <header>
+        <nav>
+            <div class="navbar-container container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand"><img src="img/avocado.svg" height="30" alt="">Avocado <small>the Web Genome Project</small></a>
+                </div>
+                <a href="extension/avocadoproject.zip" class="btn btn-info btn-inverted navbar-btn pull-right">Install</a>
+                <ul class="nav navbar-nav pull-right">
+                    <li id="hacktech"><a href="https://twitter.com/thehackTECH"><small>#HackTech</small></a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     
+    <div class="container">
+        <div class="center-container">
+        <blockquote id="about-quote">
+            Meet the revolutionary new way to explore the web. Avocado utilizes data from global web trends and from your browsing history to map the "genome" of the internet, based on real, useful characteristics like subject matter and average user retention rate. Our unobtrusive plugin then uses this data to present you with interesting new websites that you'll wish you would have heard of sooner. Enjoy our special guacamole of the web, made just for you.
+        </blockquote>
+        </div>
+    </div>
 
-    <!-- Firebase -->
-    <script src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
-    
-    <!-- Angular -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.9/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angularFire/0.5.0/angularfire.min.js"></script>
+    </section>
+    <!-- <footer>
+        <div class="footer-container container">
+            <p>Brought to you by Nolan, Shane, Stephen, and Austin</p>
+        </div>
+    </footer> -->
 
-    <!-- jQuery -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
+    <!-- Avocado scripts -->
+    <script src="js/app.js"></script>
 </body>
-    
 </html>
